@@ -7,13 +7,15 @@ class Book:
         self.available_quantity = available_quantity
 
 class Library:
-    def __init__(self):
-        self.books = [
-            Book("Book1", "Author1", 5),
-            Book("Book2", "Author2", 10),
-            # Agrega más libros según sea necesario
-        ]
-        self.checked_out_books = []
+    class Library:
+        def __init__(self, user_input=input):
+            self.user_input = user_input
+            self.books = [
+                Book("Book1", "Author1", 5),
+                Book("Book2", "Author2", 10),
+                # Agrega más libros según sea necesario
+            ]
+            self.checked_out_books = []
 
     def checkout_books(self):
         print("Checkout Books:")
@@ -23,7 +25,7 @@ class Library:
         total_quantity = 0
 
         while True:
-            book_title = input("Enter the title of the book you want to checkout (or 'done' to finish): ")
+            book_title = self.user_input("Enter the title of the book you want to checkout (or 'done' to finish): ")
 
             if book_title.lower() == 'done':
                 break
